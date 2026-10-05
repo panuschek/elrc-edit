@@ -1,0 +1,224 @@
+.wrap {
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.inner {
+  position: relative;
+  min-width: 100%;
+}
+
+.canvas {
+  position: sticky;
+  left: 0;
+  display: block;
+  cursor: pointer;
+}
+
+.bars {
+  position: relative;
+  margin: 4px 0 10px;
+}
+
+.playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 2px;
+  background: var(--playhead);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.7;
+}
+
+.playheadOn {
+  opacity: 1;
+}
+
+/* --- line bar ---------------------------------------------------------------------- */
+
+.bar {
+  position: absolute;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--bar);
+  user-select: none;
+  overflow: hidden;
+}
+
+.bar:hover {
+  border-color: var(--accent);
+  z-index: 2;
+}
+
+.barSelected {
+  border: 2px solid var(--accent);
+  z-index: 3;
+}
+
+.barPlaying {
+  background: var(--bar-playing);
+}
+
+.barOverlap {
+  border: 2px solid var(--danger);
+  background: var(--danger-soft);
+}
+
+.strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 7px;
+  background: var(--strip);
+  border-bottom: 1px solid var(--border);
+  cursor: grab;
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.strip:active {
+  cursor: grabbing;
+}
+
+.grip {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.number {
+  font-weight: 600;
+}
+
+.startHandle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 18px;
+  cursor: ew-resize;
+  background: var(--accent);
+  opacity: 0.55;
+  z-index: 2;
+}
+
+.startHandle:hover {
+  opacity: 1;
+}
+
+.words {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 18px;
+  bottom: 0;
+}
+
+.leadIn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  cursor: grab;
+  background: repeating-linear-gradient(135deg, var(--hatch) 0 4px, transparent 4px 8px);
+}
+
+.pause {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-style: italic;
+  color: var(--muted);
+  cursor: grab;
+}
+
+.word {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.word:hover {
+  background: var(--surface-hover);
+}
+
+.wordSelected {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.wordPlaying {
+  background: var(--accent);
+  color: white;
+}
+
+.sep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  margin-left: -5px;
+  cursor: ew-resize;
+  z-index: 1;
+}
+
+.sep::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  bottom: 3px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--sep);
+}
+
+.sep:hover::after,
+.sepSelected::after {
+  background: var(--accent);
+  left: 3px;
+  width: 4px;
+}
+
+.dragLabel {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--text);
+  color: var(--bg);
+  font: 600 13px ui-monospace, monospace;
+}
+
+.dragLimited {
+  background: var(--danger);
+  color: white;
+}
